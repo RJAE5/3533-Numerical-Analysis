@@ -1,3 +1,29 @@
+/*****************************************************************************\
+*
+*  Author:           Rykir Evans
+*  Email:            rjevans0408@my.msutexas.edu | rykirjoe@yahoo.com
+*  Title:            Bisection Root Approximation Method
+*  Course:           MATH 3533 Numerical Analysis
+*  Professor:        Dr. Jeff Hood
+*  Semester:         Fall 2025
+*
+*  Description:
+*         This program uses input from the user regarding the bounds of an
+*         interval for which to examine the roots of a hard-coded function.
+*         Additionally, a parameter for desired accuracy and maximum number
+*         of iterations are also requested. The program results with the
+*         root location approximation and the number of steps in order to
+*         achieve this approximation.
+*         
+*  Usage:
+*         To use this program, first define a polynomial function in the `f()`
+*         function. Then you may use some standard C++ compiler and run the
+*         program using `./main`. From there, follow the prompts as requested
+*         and the results will be displayed.
+*         
+*  Files: 
+*         main.cpp
+\******************************************************************************/
 #include <iostream>
 #include <cmath>
 
