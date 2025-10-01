@@ -26,13 +26,14 @@
 \******************************************************************************/
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 
 using namespace std;
 
 // Polynomial function for calculation
 double f(double x)
 {
-    return pow(x,3) - 7 * pow(x,2) + 14 * x - 6;
+    return pow(x,2) - 6;
 }
 
 // Signum function to effectively determine the sign of a number
@@ -100,7 +101,7 @@ int main()
         if(mid < tol || FP == 0)
         {
             // Output complete message with mid point value and number of steps taken.
-            cout << "Program complete with p = " << p << endl;
+            cout << "Program complete with p = " << setprecision(10) << p << endl;
             cout << "Steps taken: " << i << endl;
             break;
         }
