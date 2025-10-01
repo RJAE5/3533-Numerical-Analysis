@@ -26,6 +26,7 @@
 \******************************************************************************/
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 
 using namespace std;
 
@@ -57,7 +58,7 @@ int main()
 
         if(abs(p-p0) < tol)
         {
-            cout << "Fixed point achieved at g(p0) = " << p << endl;
+            cout << "Fixed point achieved at g(p0) = " << setprecision(10) << p << endl;
             cout << "p0 = " << p0 << endl;
             cout << "Achieved in " << i << " steps!" << endl;
             break;
@@ -67,7 +68,7 @@ int main()
             if(i == n0 - 1)
             {
                 cout << "Error: Could not approximate fixed point within desired maximum iterations" << endl;
-                cout << "Closest g(p0) achieved => " << p << endl;
+                cout << "Closest g(p0) achieved => " << setprecision(10) << p << endl;
                 cout << "p0 = " << p0 << endl;
             }
             p0 = p;
