@@ -18,22 +18,25 @@
 \******************************************************************************/
 #include <iostream>
 #include <cmath>
+#include <iomanip>
+#include <chrono>
 
 using namespace std;
 
 // Function for calculation
 double f(double x)
 {
-    return pow(x,3) + 3 * pow(x,2) - 1;
+    return (1/x) - M_PI;
 }
 
 double fPrime(double x)
 {
-    return 3 * pow(x,2) + 6*x;
+    return -1 / pow(x,2);
 }
 
 int main()
 {
+
     double p0, tol, n0; // Input variables
     double p; // Internal calculation variable
 
@@ -48,6 +51,7 @@ int main()
     cout << endl;
 
 
+    auto startTime = chrono::high_resolution_clock::now();
     for(int i = 1; i <= n0; i++)
     {
 
@@ -55,7 +59,7 @@ int main()
 
         if(abs(p-p0) < tol)
         {
-            cout << "Root P achieved at = " << p << endl;
+            cout << "Root P achieved at = " << setprecision(10) << p << endl;
             cout << "Achieved in " << i << " steps!" << endl;
             break;
         }
@@ -64,12 +68,17 @@ int main()
             if(i == n0)
             {
                 cout << "Error: Could not approximate fixed point within desired maximum iterations" << endl;
-                cout << "Closest P achieved => " << p << endl;
+                cout << "Closest P achieved => " << setprecision(10) << p << endl;
                 cout << "p0 = " << p0 << endl;
             }
             p0 = p;
         }
     
     }
+    auto endTime = chrono::high_resolution_clock::now();
+    auto duration = endTime - startTime;
+
+    auto microseconds = chrono::duration_cast<std::chrono::microseconds>(duration);
+    std::cout << "Execution time: " << microseconds.count() << " microseconds" << std::endl;
 
 }

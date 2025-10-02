@@ -18,13 +18,15 @@
 \******************************************************************************/
 #include <iostream>
 #include <cmath>
+#include <iomanip>
+#include <chrono>
 
 using namespace std;
 
 // Function for calculation
 double f(double x)
 {
-    return pow(x,3) + 3 * pow(x,2) - 1;
+    return (1 / x) - M_PI;
 }
 
 int main()
@@ -45,6 +47,8 @@ int main()
     cin >> n0;
     cout << endl;
 
+    auto startTime = chrono::high_resolution_clock::now();
+
     // Internal function evaluation
     q0 = f(p0);
     q1 = f(p1);
@@ -59,7 +63,7 @@ int main()
         if(abs(p-p1) < tol)
         {
             // Within tolerance: Output success
-            cout << "Root P achieved at = " << p << endl;
+            cout << "Root P achieved at = " << setprecision(10) << p << endl;
             cout << "Achieved in " << i << " steps!" << endl;
             break;
         }
@@ -71,7 +75,7 @@ int main()
             if(i == n0)
             {
                 cout << "Error: Could not approximate root within desired maximum iterations" << endl;
-                cout << "Closest P achieved => " << p << endl;
+                cout << "Closest P achieved => " << setprecision(10) << p << endl;
             }
 
             // Evaluation of other variables.
@@ -81,4 +85,10 @@ int main()
             q1 = f(p);
         }
     }
+
+    auto endTime = chrono::high_resolution_clock::now();
+    auto duration = endTime - startTime;
+
+    auto microseconds = chrono::duration_cast<std::chrono::microseconds>(duration);
+    std::cout << "Execution time: " << microseconds.count() << " microseconds" << std::endl;
 }

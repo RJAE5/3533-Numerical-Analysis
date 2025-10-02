@@ -27,13 +27,14 @@
 #include <iostream>
 #include <cmath>
 #include <iomanip>
+#include <chrono>
 
 using namespace std;
 
 // Polynomial function for calculation
 double f(double x)
 {
-    return pow(x,2) - 6;
+    return (1/x) - M_PI;
 }
 
 // Signum function to effectively determine the sign of a number
@@ -82,6 +83,8 @@ int main()
         cin >> N;
     }
 
+    auto startTime = chrono::high_resolution_clock::now();
+
     // Evaluate function at left end point
     double FA = f(a);
 
@@ -122,4 +125,10 @@ int main()
         if(i == N)
              cout << "Max number of iterations exceeded, exiting the program with p = " << p << endl;
     }
+    
+    auto endTime = chrono::high_resolution_clock::now();
+    auto duration = endTime - startTime;
+
+    auto microseconds = chrono::duration_cast<std::chrono::microseconds>(duration);
+    std::cout << "Execution time: " << microseconds.count() << " microseconds" << std::endl;
 }

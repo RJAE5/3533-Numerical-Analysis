@@ -33,7 +33,7 @@ using namespace std;
 // Polynomial function for calculation
 double f(double x)
 {
-    return tan(x);
+    return pow(x,2) - 6;
 }
 
 int main()
